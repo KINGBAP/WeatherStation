@@ -7,7 +7,7 @@ class Screen {
   public:
     Screen();
     void begin();
-    void printTemperatureAndHumidity(float temperature,float humidity);
+    void printTemperatureAndHumidity(float temperature,float humidity,int airQuality);
     void printAirQuality(int airQuality);
 
   private:
