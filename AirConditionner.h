@@ -3,19 +3,20 @@
 
 
 #include <Servo.h>
+#include "Hardware.h"
 
-class AirConditionner {
+class AirConditionner : public Hardware {
   private:
-    int pin;
     Servo monServo;
-   // boolean isOn;
+    int seuil=21;
 
   public:
     AirConditionner(int pin);
     void begin();
     void turnOn();
     void turnOff();
-    //boolean getIsOn();
+    int getSeuil();
+    void setSeuil();
 };
 
 #endif // AIR_CONDITIONNER_H

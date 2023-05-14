@@ -7,9 +7,8 @@ class Screen {
   public:
     Screen();
     void begin();
-    void printTemperatureAndHumidity(float temperature,float humidity,int airQuality);
-    void printAirQuality(int airQuality);
-
+    void printIndoor(float temperature,float humidity,int airQuality);
+    
   private:
     U8G2_SH1107_SEEED_128X128_1_SW_I2C u8g2;
 };

@@ -7,7 +7,7 @@ void Screen::begin() {
   u8g2.begin();
 }
 
-void Screen::printTemperatureAndHumidity(float temperature,float humidity,int airQuality) {
+void Screen::printIndoor(float temperature,float humidity,int airQuality) {
 u8g2.firstPage();
   do {
 u8g2.setFont(u8g2_font_ncenB10_tr);
@@ -33,24 +33,4 @@ if (airQuality == AirQualitySensor::FORCE_SIGNAL) {
     }
 
   } while (u8g2.nextPage() );
-}
-
-void Screen::printAirQuality(int airQuality) {
-u8g2.firstPage();
-  do {
-u8g2.setFont(u8g2_font_ncenB10_tr);
-u8g2.drawStr(0, 72, "Air Quality:");
-//u8g2.setCursor(80, 72);
-if (airQuality == AirQualitySensor::FORCE_SIGNAL) {
-        u8g2.drawStr(80,72,"High pollution! Force signal active.");
-    } else if ( airQuality== AirQualitySensor::HIGH_POLLUTION) {
-       u8g2.drawStr(80,72,"High pollution!");
-    } else if (airQuality == AirQualitySensor::LOW_POLLUTION) {
-        u8g2.drawStr(80,72,"Low pollution!");
-    } else if (airQuality == AirQualitySensor::FRESH_AIR) {
-         u8g2.drawStr(80,72,"Fresh air.");
-    }
-//u8g2.print(airQuality);
-//u8g2.drawStr(104, 72, "ppm");
-  } while (u8g2.nextPage());
 }

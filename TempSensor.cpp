@@ -1,6 +1,6 @@
 #include "TempSensor.h"
 
-TempSensor::TempSensor(int pin, int type) {
+TempSensor::TempSensor(int pin, int type)  : Sensor(pin){
   dht = new DHT(pin, type);
 }
 
@@ -8,15 +8,7 @@ void TempSensor::begin() {
   dht->begin();
 }
 
-float TempSensor::readTemperature() {
-  return dht->readTemperature();
-}
-
-float TempSensor::readHumidity() {
-  return dht->readHumidity();
-}
-
-int TempSensor::readTemperatureAndHumidity(float *data) {
+int TempSensor::read(float *data) {
   return dht->readTempAndHumidity(data);
 }
 
@@ -26,7 +18,7 @@ void TempSensor::printTemperatureAndHumidity() {
     // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
 
 
-    if (!readTemperatureAndHumidity(temp_hum_val)) {
+    if (!read(temp_hum_val)) {
         Serial.print("Humidity: ");
         Serial.print(temp_hum_val[0]);
         Serial.print(" %\t");

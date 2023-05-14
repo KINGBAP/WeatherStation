@@ -1,10 +1,10 @@
 #include "AirSensor.h"
 
-AirSensor::AirSensor(int pin) : airQualitySensor(pin) {
+AirSensor::AirSensor(int pin) : Sensor(pin),airQualitySensor(pin) {
     // do nothing
 }
 
-bool AirSensor::begin() {
+void AirSensor::begin() {
   bool initialized = false;
   unsigned long startTime = millis();
   
@@ -19,12 +19,10 @@ bool AirSensor::begin() {
   if (!initialized) {
     Serial.println("Air quality sensor initialization failed.");
   }
-
-  return initialized;
 }
 
 
-int AirSensor::getAirQuality(void) {
+int AirSensor::read(void) {
     int airQuality = airQualitySensor.slope();
 
     Serial.print("Sensor value: ");

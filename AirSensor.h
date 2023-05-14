@@ -3,13 +3,15 @@
 
 #include "Arduino.h"
 #include "Air_Quality_Sensor.h"
+#include "Sensor.h"
 
-class AirSensor {
+
+class AirSensor : public Sensor {
   public:
     AirSensor(int pin);
 
-    bool begin(void);
-    int  getAirQuality(void);
+    void begin(void);
+    int read(void);
 
   protected:
     AirQualitySensor airQualitySensor;

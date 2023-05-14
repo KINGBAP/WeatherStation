@@ -2,18 +2,16 @@
 #define TEMP_SENSOR_H
 
 #include <DHT.h>
+#include "Sensor.h"
 
-class TempSensor {
+class TempSensor : public Sensor {
   private:
-    int pin;
     DHT* dht;
 
   public:
     TempSensor(int pin, int type = DHT11);
     void begin();
-    float readTemperature();
-    float readHumidity();
-    int readTemperatureAndHumidity(float* data);
+    int read(float* data);
     void printTemperatureAndHumidity();
 };
 
